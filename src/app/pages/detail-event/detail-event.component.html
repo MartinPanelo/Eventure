@@ -1,0 +1,136 @@
+<div class="d-flex justify-content-center">
+<mat-card appearance="outlined">
+  <mat-card-content>
+   
+      <div *ngIf="evento">
+        <h2>Detalles del Evento</h2>
+
+        <form #editFormEvent="ngForm" (ngSubmit)="onSubmit(editFormEvent)">
+
+            <div class=" form-group my-4 ">
+                <p-floatLabel>
+                   <input pInputText  name="nombre" id="nombre" [(ngModel)]="evento.nombre" #nombreInput="ngModel"
+                      [ngClass]="{
+                'ng-dirty ng-invalid':
+                  nombreInput.invalid && nombreInput.touched
+              }" required
+              minlength="3"
+              maxlength="50"
+              pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$" />
+                   <label for="nombre">Nombre</label>
+
+                </p-floatLabel>
+                <!-- Mensajes de error -->
+                <small class="p-error" *ngIf="nombreInput.invalid && nombreInput.touched">
+                    <div *ngIf="nombreInput.errors?.['required']">
+                      El nombre es requerido
+                    </div>
+                    <div *ngIf="nombreInput.errors?.['minlength']">
+                      El nombre debe tener al menos {{ nombreInput.errors?.['minlength'].requiredLength }} caracteres
+                    </div>
+                    <div *ngIf="nombreInput.errors?.['maxlength']">
+                      El nombre no debe exceder los {{ nombreInput.errors?.['maxlength'].requiredLength }} caracteres
+                    </div>
+                   
+                  </small>
+             </div>
+
+
+             <div class=" form-group my-4 ">
+                <p-floatLabel>
+                    <p-calendar name="fecha" id="fecha" [minDate]="minDate"  dateFormat="dd/mm/yy " [showTime]="true"  [(ngModel)]="evento.fecha" #fechaInput="ngModel"
+                       [ngClass]="{
+                 'ng-dirty ng-invalid':
+                 fechaInput.invalid && fechaInput.touched
+               }" required
+               
+             />
+                    <label for="fecha">Fecha</label>
+ 
+                 </p-floatLabel>
+                <!-- Mensajes de error -->
+                <small class="p-error" *ngIf="fechaInput.invalid && fechaInput.touched">
+                    <div *ngIf="fechaInput.errors?.['required']">
+                      El fecha es requerida
+                    </div>
+                    <div *ngIf="fechaInput.errors?.['minlength']">
+                      El fecha debe tener al menos {{ fechaInput.errors?.['minlength'].requiredLength }} caracteres
+                    </div>
+                    <div *ngIf="fechaInput.errors?.['maxlength']">
+                      El fecha no debe exceder los {{ fechaInput.errors?.['maxlength'].requiredLength }} caracteres
+                    </div>
+                   
+                  </small>
+             </div>
+
+
+             <div class=" form-group my-4 ">
+                <p-floatLabel>
+                   <input pInputText  name="ubicacion" id="Ubicacion" [(ngModel)]="evento.ubicacion" #ubicacionInput="ngModel"
+                      [ngClass]="{
+                'ng-dirty ng-invalid':
+                  ubicacionInput.invalid && ubicacionInput.touched
+              }" required
+              minlength="3"
+              maxlength="50"
+              pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$" />
+                   <label for="ubicacion">Ubicacion</label>
+
+                </p-floatLabel>
+                <!-- Mensajes de error -->
+                <small class="p-error" *ngIf="ubicacionInput.invalid && ubicacionInput.touched">
+                    <div *ngIf="ubicacionInput.errors?.['required']">
+                      El ubicacion es requerido
+                    </div>
+                    <div *ngIf="ubicacionInput.errors?.['minlength']">
+                      El ubicacion debe tener al menos {{ ubicacionInput.errors?.['minlength'].requiredLength }} caracteres
+                    </div>
+                    <div *ngIf="ubicacionInput.errors?.['maxlength']">
+                      El ubicacion no debe exceder los {{ ubicacionInput.errors?.['maxlength'].requiredLength }} caracteres
+                    </div>
+                   
+                  </small>
+             </div>
+
+
+             <div class=" form-group my-4 ">
+                <p-floatLabel>
+                   <textarea pInputText  name="descripcion" id="descripcion" [(ngModel)]="evento.descripcion" #descripcionInput="ngModel"
+                      [ngClass]="{
+                'ng-dirty ng-invalid':
+                  descripcionInput.invalid && descripcionInput.touched
+              }" required
+              minlength="3"
+              maxlength="50"
+              pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$"></textarea>
+                   <label for="descripcion">descripcion</label>
+
+                </p-floatLabel>
+                <!-- Mensajes de error -->
+                <small class="p-error" *ngIf="descripcionInput.invalid && descripcionInput.touched">
+                    <div *ngIf="descripcionInput.errors?.['required']">
+                      El descripcion es requerido
+                    </div>
+                    <div *ngIf="descripcionInput.errors?.['minlength']">
+                      El descripcion debe tener al menos {{ descripcionInput.errors?.['minlength'].requiredLength }} caracteres
+                    </div>
+                    <div *ngIf="descripcionInput.errors?.['maxlength']">
+                      El descripcion no debe exceder los {{ descripcionInput.errors?.['maxlength'].requiredLength }} caracteres
+                    </div>
+                   
+                  </small>
+             </div>
+
+             <div class="d-flex justify-content-end gap-2">
+              
+                <p-button type="submit" label="Editar" severity="info"/>
+            </div>
+
+        </form>
+       
+      
+      </div>
+    
+  </mat-card-content>
+</mat-card>
+</div>

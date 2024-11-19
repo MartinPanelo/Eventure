@@ -1,0 +1,94 @@
+<p>landing works!</p>
+
+<p-button label="Submit" />
+<div class="container text-center">
+    <div class="d-flex justify-content-start">
+        <div>
+            <p-button label="Submit" />
+        </div>
+        <div>
+            <p-button label="Submit" />
+        </div>
+        <div>
+            <p-button label="Submit" />
+        </div>
+    </div>
+    <div class="d-flex justify-content-end">
+        <div>
+            <p-button label="Submit" />
+        </div>
+        <div>
+            <p-button label="Submit" />
+        </div>
+        <div>
+            <p-button label="Submit" />
+        </div>
+    </div>
+    <div class="d-flex justify-content-center">
+        <div>
+            <p-button label="Submit" />
+        </div>
+        <div>
+            <p-button label="Submit" />
+        </div>
+        <div>
+            <p-button label="Submit" />
+        </div>
+    </div>
+    <div class="d-flex justify-content-between">
+        <div>
+            <p-button label="Submit" />
+        </div>
+        <div>
+            <p-button label="Submit" />
+        </div>
+        <div>
+            <p-button label="Submit" />
+        </div>
+    </div>
+    <div class="d-flex justify-content-around">
+        <div>
+            <p-button label="Submit" />
+        </div>
+        <div>
+            <p-button label="Submit" />
+        </div>
+        <div>
+            <p-button label="Submit" />
+        </div>
+    </div>
+    <div class="d-flex justify-content-evenly">
+        <div>
+            <p-button label="Submit" />
+        </div>
+        <div>
+            <p-button label="Submit" />
+        </div>
+        <div>
+            <p-button label="Submit" />
+        </div>
+    </div>
+
+  <div>
+
+
+    
+
+<mat-form-field>
+  <mat-label>Toppings</mat-label>
+  <mat-select [formControl]="toppings" multiple>
+    <mat-select-trigger>
+      {{toppings.value?.[0] || ''}}
+      @if ((toppings.value?.length || 0) > 1) {
+      <span class="example-additional-selection">
+        (+{{ (toppings.value?.length || 0) - 1 }}
+        {{ toppings.value?.length === 2 ? "other" : "others" }})
+      </span>
+      }
+    </mat-select-trigger>
+    @for (topping of toppingList; track topping) {
+    <mat-option [value]="topping">{{ topping }}</mat-option>
+    }
+  </mat-select>
+</mat-form-field>
+</div>

@@ -1,0 +1,70 @@
+<div class="d-flex justify-content-center">
+   <mat-card class="example-card" appearance="outlined">
+      <div class="card m-4">
+         <div class="text-center">
+            <mat-card-title>Iniciar sesión</mat-card-title>
+         </div>
+         <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+            <div class="row">
+               <div class="col form-group my-4 ">
+                  <p-floatLabel>
+                     <input pInputText email name="usuario" id="Usuario" [(ngModel)]="usuario" #usuarioInput="ngModel"
+                        [ngClass]="{
+                  'ng-dirty ng-invalid':
+                    usuarioInput.invalid && usuarioInput.touched
+                }" required />
+                     <label for="Usuario">Usuario</label>
+
+                  </p-floatLabel>
+                  <!-- Mensajes de error -->
+                  <small class="p-error" *ngIf="usuarioInput.invalid && usuarioInput.touched">
+                     <div *ngIf="usuarioInput.errors?.['required']">
+                        El correo es requerido
+                     </div>
+                     <div *ngIf="usuarioInput.errors?.['email']">
+                        El correo no es válido
+                     </div>
+                  </small>
+               </div>
+
+               <div class=" col form-group my-4">
+                  <p-floatLabel>
+                     <p-password [(ngModel)]="contrasena" [toggleMask]="true" name="contrasena" id="Contrasena"
+                        #contrasenaInput="ngModel" promptLabel="Minimo 6 caracteres" weakLabel="Muy simple"
+                        mediumLabel="Un poco complejo" strongLabel="Exelente" [ngClass]="{
+                  'ng-dirty ng-invalid':
+                    contrasenaInput.invalid && contrasenaInput.touched
+                }" required
+                minlength="6" />
+                     <label for="Contrasena">contraseña</label>
+
+                  </p-floatLabel>
+                  <!-- Mensajes de error -->
+                  <small class="p-error" *ngIf="contrasenaInput.invalid && contrasenaInput.touched">
+                     <div *ngIf="contrasenaInput.errors?.['required']">
+                        La contraseña es requerida
+                     </div>
+                     <div *ngIf="contrasenaInput.errors?.['minlength']">  
+                        La contraseña debe tener al menos 6 caracteres
+                     </div>
+                  </small>
+               </div>
+            </div>
+            <div class="d-flex justify-content-center">
+               <div>
+                  <p-button type="submit" label="Iniciar sesión" severity="primary" 
+                     ariaCurrentWhenActive="page" size="small" />
+               </div>
+            </div>
+         </form>
+         <hr class="my-3" />
+         <div class="card-footer">
+            <div class="d-flex align-items-center justify-content-center">
+               <p class="me-2">¿No tienes cuenta?</p>
+               <p-button label="Registrarse" severity="info" routerLink="/register" ariaCurrentWhenActive="page"
+                  size="small" />
+            </div>
+         </div>
+      </div>
+   </mat-card>
+</div>
