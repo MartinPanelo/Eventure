@@ -23,10 +23,13 @@ import { PasswordModule } from 'primeng/password';
 import { PanelModule } from 'primeng/panel';
 import { CalendarModule } from 'primeng/calendar';
 import { InputTextareaModule } from 'primeng/inputtextarea';
-
-
-
-
+import { SplitButtonModule } from 'primeng/splitbutton';
+import { CardModule } from 'primeng/card';
+import { DividerModule } from 'primeng/divider';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api'; // Asegúrate de importar MessageService
+import { MessageModule } from 'primeng/message'; // Importa el MessageModule
+import { CarouselModule } from 'primeng/carousel';
 
 
 
@@ -51,6 +54,12 @@ import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import { DetailEventComponent } from './pages/detail-event/detail-event.component';
 import { DialogModule } from 'primeng/dialog';
+import { AssistEventComponent } from './pages/assist-event/assist-event.component';
+import { AddEventComponent } from './pages/add-event/add-event.component';
+import { ListEventsComponent } from './pages/list-events/list-events.component';
+import {MatListModule} from '@angular/material/list';
+import { ListUserEventsComponent } from './pages/list-user-events/list-user-events.component';
+
 
 
 
@@ -100,6 +109,10 @@ const initializeAppFactory = (primeConfig: PrimeNGConfig) => () => {
     RegisterComponent,
     ManagerEventsComponent,
     DetailEventComponent,
+    AssistEventComponent,
+    AddEventComponent,
+    ListEventsComponent,
+    ListUserEventsComponent,
   ],
   imports: [
     ButtonModule,
@@ -113,6 +126,12 @@ const initializeAppFactory = (primeConfig: PrimeNGConfig) => () => {
     PasswordModule,
     CalendarModule,
     InputTextareaModule,
+    SplitButtonModule,
+    CardModule,
+    DividerModule,
+    ToastModule,
+    MessageModule,
+    CarouselModule,
 
     BrowserAnimationsModule,
     MatButtonModule,
@@ -131,17 +150,20 @@ const initializeAppFactory = (primeConfig: PrimeNGConfig) => () => {
     MatSortModule,
     MatDialogModule,
     MatPaginator,
+    MatListModule,
 
     BrowserModule,
     AppRoutingModule,
     HttpClientModule
   ],
   providers: [
+    MessageService,
     {
       provide: APP_INITIALIZER,
       useFactory: initializeAppFactory,
       deps: [PrimeNGConfig],
       multi: true,
+      
     },
     provideAnimationsAsync(),
   ],

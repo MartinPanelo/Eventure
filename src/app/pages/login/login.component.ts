@@ -24,18 +24,17 @@ export class LoginComponent {
   // Método para manejar el envío del formulario
   onSubmit(form: NgForm) {
     if (form.valid) {
-      console.log('Formulario válido');
-      console.log('Usuario:', this.usuario);
-      console.log('Valores del formulario:', form.value);
+
       // aca logeo
 
       this.authService.login(this.usuario, this.contrasena).subscribe(
         (response) => {
           console.log('Respuesta del servidor:', response);
           if (response.usuario.rol === 'organizador') {
+            console.log('Rol actual:', response.usuario.rol);
           this.router.navigate(['/managerevents']);
           }else{
-            this.router.navigate(['/register']);
+            this.router.navigate(['/listmyevents']); // ACA A LA LISTA DE PROXIMIS EVENTOS
           }
         },
         (error) => {

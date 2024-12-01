@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, tap } from 'rxjs';
-import { Evento } from '../models/evento';
+import { Evento, EventoAdd } from '../models/evento';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,7 @@ export class EventsService {
     });
   }
 
-  public getEventosByUser(id: number) : Observable<any> {
+  public getEventoById(id: number) : Observable<any> {
     return this.http.get(`${this.apiUrl}/DetalleEvento/${id}`, {
       withCredentials: true, 
     });
@@ -29,7 +29,7 @@ export class EventsService {
       withCredentials: true,
     }).pipe(
       tap(response => {
-        console.log('Respuesta de la eliminación:', response); // Aquí logueamos la respuesta
+        console.log('Respuesta de la eliminación:', response); 
       })
     );
   }
@@ -40,9 +40,39 @@ export class EventsService {
       withCredentials: true,
     }).pipe(
       tap(response => {
-        console.log('Respuesta de la edicion:', response); // Aquí logueamos la respuesta
+        console.log('Respuesta de la edicion:', response); 
       })
     );
+  }
+
+  public agregarEvento (event: EventoAdd): Observable<any> {
+    return this.http.post(`${this.apiUrl}/agregarEvento`, event, {
+      withCredentials: true,
+    }).pipe(
+      tap(response => {
+        console.log('Respuesta de la edicion:', response); 
+      })
+    );
+  }
+
+
+  public GetEventsByDate(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/eventosProximos`, {
+      withCredentials: true, 
+    });
+  }
+
+  public GetmyEventsSuscribed(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/eventosinscrito`, {
+      withCredentials: true, 
+    });
+  }
+
+
+  public getDataCertificate(id: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/certificados/${id}`, {
+      withCredentials: true, 
+    });
   }
 
 

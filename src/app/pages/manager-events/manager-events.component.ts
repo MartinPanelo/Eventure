@@ -5,6 +5,7 @@ import { Evento } from '../../core/models/evento';
 import { Router } from '@angular/router';
 import { AuthService } from '../../core/services/auth.service';
 import { EventsService } from '../../core/services/events.service';
+import { ShowTService } from '../../core/services/show-t.service';
 
 @Component({
   selector: 'app-manager-events',
@@ -44,7 +45,7 @@ export class ManagerEventsComponent implements AfterViewInit {
     this.dataSource.paginator = this.paginator;
   }
 
-  constructor(private eventsService: EventsService, private router: Router) {}
+  constructor(private eventsService: EventsService, private router: Router,private showTService: ShowTService) {}
 
   ngOnInit() {
     this.getAllEvents();
@@ -55,6 +56,15 @@ export class ManagerEventsComponent implements AfterViewInit {
     this.router.navigate(['/detailevent'], { state: { id: element.id } });
   }
 
+  managerAsist(element: Evento) {
+
+    this.router.navigate(['/asistevent'], { state: { id: element.id } });
+  }
+
+  
+
+
+
   getAllEvents(): void {
   
     this.eventsService.getAllEvents().subscribe(
@@ -63,7 +73,7 @@ export class ManagerEventsComponent implements AfterViewInit {
         this.dataSource.data = response.data.map((event: any) => ({
           id: event.Id,
           nombre: event.Nombre,
-          fecha: event.Fecha,
+          fecha: new Date(event.Fecha.toLocaleString('en-US', { timeZone: 'America/Argentina/Buenos_Aires'})),
           ubicacion: event.Ubicacion,
           descripcion: event.Descripcion,
         }));
@@ -84,7 +94,9 @@ export class ManagerEventsComponent implements AfterViewInit {
     this.eventsService.deleteEvent(id).subscribe(
       (response) => {
         if (response) {
+          this.showTService.showMessage('warn', 'Exito', "Evento eliminado con exito");
           console.log('Evento eliminado correctamente');
+          
           this.getAllEvents();
         }
         
@@ -97,8 +109,10 @@ export class ManagerEventsComponent implements AfterViewInit {
   }
 
 
-
-
+  AddEvent( ) {
+  
+    this.router.navigate(['/addevent']);
+  }
 
 
 

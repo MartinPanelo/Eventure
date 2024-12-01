@@ -1,0 +1,27 @@
+.scrollable-container {
+    max-height: 320px; /* Ajusta la altura máxima según necesites */
+    width: 600px;
+    overflow-y: auto; /* Scroll vertical */
+    border: 2px solid #424242;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 5px 6px rgba(0, 0, 0, 0.1);
+    
+  }
+
+
+/* Cambiar el estilo de la barra de scroll */
+
+/* Fondo de la barra de scroll */
+.scrollable-container::-webkit-scrollbar {
+    width: 12px; /* Ancho de la barra */
+    background-color: #f0f0f031; /* Color de fondo */
+    border-radius: 10px; /* Opcional: esquinas redondeadas */
+  }
+  
+  /* Color del "thumb" (la parte que se mueve) */
+  .scrollable-container::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #33ff00, #0056b3); /* Degradado */
+    border-radius: 10px; /* Bordes redondeados */
+   /*  border: 2px solid linear-gradient(45deg, #ff4800, #0056b3, #ff4800);  *//* Degradado */; /* Espaciado interior */
+  }

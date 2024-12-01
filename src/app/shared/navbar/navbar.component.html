@@ -32,27 +32,16 @@
     <div class="d-flex align-items-center gap-3">
 
       
-
       <p-button
-        *ngIf="!isLoggedIn" 
-        [label]="userEmail || 'Iniciar sesión'" 
-        icon="pi pi-sign-in"
-        iconPos="right"
-        [outlined]="true"
-        severity="success"
-        routerLink="/login"
-        ariaCurrentWhenActive="page"
-      />
-      <p-button
-        *ngIf="isLoggedIn" 
-        [label]="userEmail || 'Iniciar sesión'" 
-        icon="pi pi-sign-in"
-        iconPos="right"
-        [outlined]="true"
-        severity="success"
-        (click)="logout()"
-        ariaCurrentWhenActive="page"
-      />
+      [label]="isLoggedIn ? (userEmail + ' (Cerrar sesión)') : 'Iniciar sesión'"
+      icon="pi pi-sign-in"
+      iconPos="right"
+      [outlined]="true"
+      severity="success"
+      [routerLink]="!isLoggedIn ? '/login' : null"
+      (click)="isLoggedIn ? logout() : null"
+      ariaCurrentWhenActive="page"
+    />
 
       <p-avatar
         image="https://picsum.photos/seed/picsum/200/200"

@@ -1,94 +1,33 @@
-<p>landing works!</p>
-
-<p-button label="Submit" />
-<div class="container text-center">
-    <div class="d-flex justify-content-start">
-        <div>
-            <p-button label="Submit" />
-        </div>
-        <div>
-            <p-button label="Submit" />
-        </div>
-        <div>
-            <p-button label="Submit" />
-        </div>
+<section class="features">
+  <h2>Proyecto: Sistema de Gestión de Eventos</h2>
+  <div class="mx-5">
+    <p class="Descripcion">
+      Descripción: Desarrollar un sistema básico de gestión de eventos para una
+      comunidad local que permita a los organizadores administrar la información
+      de los eventos, como nombre, fecha, ubicación y descripción. Los usuarios
+      podrán ver una lista de eventos próximos, registrarse para asistir a un
+      evento y luego confirmar su participación, así como también descargar un
+      certificado de participación.
+    </p>
+  </div>
+  <div class="mx-5">
+    <div class="row align-items-center justify-content-center">
+      <div class="col ">
+        <p-carousel
+          [value]="features"
+          [numVisible]="3"
+          [numScroll]="1"
+          [circular]="true"
+          autoplayInterval="3000"
+        >
+          <ng-template let-feature pTemplate="item">
+            <div class="feature-card">
+              <h3>{{ feature.title }}</h3>
+              <p>{{ feature.description }}</p>
+            </div>
+          </ng-template>
+        </p-carousel>
+      </div>
     </div>
-    <div class="d-flex justify-content-end">
-        <div>
-            <p-button label="Submit" />
-        </div>
-        <div>
-            <p-button label="Submit" />
-        </div>
-        <div>
-            <p-button label="Submit" />
-        </div>
-    </div>
-    <div class="d-flex justify-content-center">
-        <div>
-            <p-button label="Submit" />
-        </div>
-        <div>
-            <p-button label="Submit" />
-        </div>
-        <div>
-            <p-button label="Submit" />
-        </div>
-    </div>
-    <div class="d-flex justify-content-between">
-        <div>
-            <p-button label="Submit" />
-        </div>
-        <div>
-            <p-button label="Submit" />
-        </div>
-        <div>
-            <p-button label="Submit" />
-        </div>
-    </div>
-    <div class="d-flex justify-content-around">
-        <div>
-            <p-button label="Submit" />
-        </div>
-        <div>
-            <p-button label="Submit" />
-        </div>
-        <div>
-            <p-button label="Submit" />
-        </div>
-    </div>
-    <div class="d-flex justify-content-evenly">
-        <div>
-            <p-button label="Submit" />
-        </div>
-        <div>
-            <p-button label="Submit" />
-        </div>
-        <div>
-            <p-button label="Submit" />
-        </div>
-    </div>
-
-  <div>
-
-
-    
-
-<mat-form-field>
-  <mat-label>Toppings</mat-label>
-  <mat-select [formControl]="toppings" multiple>
-    <mat-select-trigger>
-      {{toppings.value?.[0] || ''}}
-      @if ((toppings.value?.length || 0) > 1) {
-      <span class="example-additional-selection">
-        (+{{ (toppings.value?.length || 0) - 1 }}
-        {{ toppings.value?.length === 2 ? "other" : "others" }})
-      </span>
-      }
-    </mat-select-trigger>
-    @for (topping of toppingList; track topping) {
-    <mat-option [value]="topping">{{ topping }}</mat-option>
-    }
-  </mat-select>
-</mat-form-field>
-</div>
+  </div>
+</section>

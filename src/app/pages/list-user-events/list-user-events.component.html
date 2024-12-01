@@ -1,0 +1,61 @@
+<div class="container-fluid d-flex align-items-center flex-column">
+    <div class="text-center">
+      <h2>Mis incripciones</h2>
+    </div>
+    <!-- Contenedor con scroll vertical -->
+    <div class="scrollable-container">
+      <div class="row gap-3 mx-0">
+        <div *ngFor="let registro of registros" class="col-12">
+          <mat-card appearance="outlined">
+            <mat-card-header>
+              <mat-card-title>{{ registro.evento.nombre }}</mat-card-title>
+              <mat-card-subtitle
+                >Fecha :
+                {{
+                  registro.evento.fecha | date : "dd/MM/yyyy - HH:mm"
+                }}
+                Hs</mat-card-subtitle
+              >
+            </mat-card-header>
+            <mat-card-actions align="end" class="gap-4">
+  
+              <button  mat-stroked-button (click)="showDialog(registro.evento)">
+                Ver Más Info
+              </button>
+  
+              <button *ngIf="registro.asistencia"  mat-flat-button (click)="GetCertificado(registro.evento.id)">
+                Certificado de Asistencia
+              </button>
+  
+              <button *ngIf="registro.evento.fecha > today" mat-flat-button (click)="Cancelarparticipacion(registro.evento.id)">Cancelar Participación</button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <p-dialog
+    header="Detalles del evento"
+    [modal]="true"
+    dismissableMask="true"
+    [(visible)]="visible"
+    [style]="{ width: '35rem' }"
+  >
+    <h2>{{ EventoSeleccionado.nombre }}</h2>
+    <p class="p-text-secondary block mb-3">Fecha del evento:</p>
+    <p>{{ EventoSeleccionado.fecha | date : "dd/MM/yyyy - HH:mm" }} Hs</p>
+    <p class="p-text-secondary block mb-3">Ubicación:</p>
+    <p>{{ EventoSeleccionado.ubicacion }}</p>
+    <p class="p-text-secondary block mb-3">Descripcion:</p>
+    <p>{{ EventoSeleccionado.descripcion }}</p>
+  
+    <div class="d-flex justify-content-end gap-2">
+      <p-button
+        label="Cancelar"
+        severity="secondary"
+        (onClick)="visible = false"
+      />
+    </div>
+  </p-dialog>
+  

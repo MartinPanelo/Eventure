@@ -1,0 +1,43 @@
+h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: rgb(255, 255, 255);
+}
+
+
+
+.feature-card {
+  background: rgba(0, 0, 0, 0.1);
+  margin: 1rem;
+  padding: 5px 2rem;
+  border-radius: 15px;
+  box-shadow: 3px 1px 3px 4px rgba(0, 0, 0, 0.387);
+  transition: transform 0.3s ease;
+  height: 160px;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+}
+
+.feature-card h3 {
+  color: rgb(18, 162, 181);
+  margin-bottom: 1rem;
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
